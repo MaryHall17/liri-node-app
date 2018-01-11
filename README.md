@@ -1,0 +1,2 @@
+# liri-node-app
+A language interpretation and recognition interface as a common line in node. It can display my 20 most recent tweets with the command: node liri.js my-tweets. For the musically inclined, it can tell you all of the pertinent deets of a song with the command: liri.js spotify-this-song '&lt;insert song name>'. For movie buffs, liri can refresh your knowledge on the movie's information with the command: liri.js movie-this '&lt;insert movie name>'. Not sure how you want to use liri? Give the command: node liri.js 'do-what-it-says' and watch what happens. Enjoy!
