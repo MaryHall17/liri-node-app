@@ -7,7 +7,7 @@ var keys = require("./keys.js");
 var command = process.argv[2];
 
 var value = process.argv[3];
-console.log(value);
+
 
 
 
@@ -55,8 +55,9 @@ switch (command) {
  		if (!error) {
  			// console.log("Tweets " + JSON.stringify(tweets));
  			for (var i = 0; i < tweets.length; i++) {
- 				var tweetText = tweets[i].text;
- 				console.log(tweetText);
+ 				// var tweetText = tweets[i].text;
+ 				// console.log(tweetText);
+ 				console.log("something happened");
  			}
  			// console.log(response);
 
@@ -78,22 +79,35 @@ switch (command) {
  		console.log("There was a value")
  		spotify.search({type: 'track', query: value}, function(error, data) {
  			if(!error) {
+ 				var trackData = data.tracks.items[0];
+ 				console.log(trackData);
  				// console.log(JSON.stringify(data));
  				for (var i = 0; i < data.length; i++) {
- 					var dataArtist = data[i].artists;
- 					console.log(dataArtist);
+ 					// var dataArtist = data[i].artists;
+ 					// console.log(dataArtist);
+ 					console.log("something happened");
  				}
  			}
  		});
  	} else {
- 		console.log("No value was provided")
+ 		// console.log("No value was provided")
  		spotify.search({type: 'track', query: 'The Sign'}, function(error, data) {
  			if(!error) {
- 				console.log(data.tracks.items[0]);
+ 				var trackData = data.tracks.items[0];
+ 				for (var i = 0; i < 20; i++) {
+ 					console.log("something");
+ 				}
+ 				// console.log(JSON.stringify(data));
+ 				// console.log(data.tracks.items.length);
+ 				// console.log(trackData);
+ 				// console.log(trackData.artists[0].name);
+ 				// console.log(trackData.artists[1].name);
  				// console.log(data.album);
- 				for (var i = 0; i < data.length; i++) {
- 					var info = data.tracks.items.artists[i];
- 					console.log("log " + info);
+ 				for (var i = 0; i < 20; i++) {
+ 					var artist = trackData.artists[i].name;
+ 					console.log("var received " + trackData);
+ 					console.log("log " + artist);
+ 					console.log("something happened");
  				}
  			}
  		});
