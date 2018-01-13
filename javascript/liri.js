@@ -6,7 +6,32 @@ var keys = require("./keys.js");
 
 var command = process.argv[2];
 
-var value = process.argv[3];
+var value = process.argv;
+
+var song = "";
+
+var movie = "";
+
+// console.log(process.argv[3]);
+// return
+
+
+for (var i = 3; i < value.length; i++) {
+
+	if (i > 3 && i < value.length) {
+
+		song = song + "+" + value[i];
+		// movie = movie + "+" + value[i];
+
+	} 
+
+	else {
+
+		song += value[i];
+		// movie = movie += value[i];
+
+	}
+}
 
 
 
@@ -75,17 +100,26 @@ switch (command) {
  		secret: keys.spotify.secret
  	});
  	console.log("test");
- 	if (value) {
+ 	if (song) {
  		console.log("There was a value")
- 		spotify.search({type: 'track', query: value}, function(error, data) {
+ 		spotify.search({type: 'track', query: song}, function(error, data) {
  			if(!error) {
  				var trackData = data.tracks.items[0];
- 				console.log(trackData);
+ 				// console.log(trackData);
  				// console.log(JSON.stringify(data));
- 				for (var i = 0; i < data.length; i++) {
- 					// var dataArtist = data[i].artists;
- 					// console.log(dataArtist);
- 					console.log("something happened");
+ 				for (var i = 0; i < 20; i++) {
+ 					var artist = trackData.artists[i].name;
+ 					var track = trackData.name;
+ 					var album = trackData.album.name;
+ 					var previewLink = trackData. external_urls.spotify;
+ 					var infoObj = {
+ 						artist,
+ 						track,
+ 						album,
+ 						previewLink
+ 					};
+ 					console.log(infoObj);
+ 					
  				}
  			}
  		});
