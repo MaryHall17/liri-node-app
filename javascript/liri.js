@@ -21,14 +21,14 @@ for (var i = 3; i < value.length; i++) {
 	if (i > 3 && i < value.length) {
 
 		song = song + "+" + value[i];
-		// movie = movie + "+" + value[i];
+		movie = movie + "+" + value[i];
 
 	} 
 
 	else {
 
 		song += value[i];
-		// movie = movie += value[i];
+		movie = movie += value[i];
 
 	}
 }
@@ -163,7 +163,12 @@ switch (command) {
 
  };
 
- function movies() {
+ function movies() { 
+ 	var request = require("request");
+ 	var queryUrl = "http://www.omdbapi.com/?t=" + movie + "&y=&plot=short&apikey=trilogy";
+ 	console.log(queryUrl);
+
+
 
  }
 
