@@ -28,7 +28,7 @@ for (var i = 3; i < value.length; i++) {
 	else {
 
 		song += value[i];
-		movie = movie += value[i];
+		movie += value[i];
 
 	}
 }
@@ -168,11 +168,36 @@ switch (command) {
  	if (movie) {
  		var queryUrl = "http://www.omdbapi.com/?t=" + movie + "&y=&plot=short&apikey=trilogy";
  		console.log(queryUrl);
+
+ 		request(queryUrl, function(error, response, body) {
+
+ 			if (!error && response.statusCode === 200) {
+ 				console.log("Title: " + JSON.parse(body).Title);
+ 				console.log("Release year: " + JSON.parse(body).Year);
+ 				console.log("IMDB Rating: " + JSON.parse(body).imdbRating);
+ 				console.log("Rotten Tomatoes Rating: " + JSON.parse(body).Ratings[1].Value);
+ 				console.log("Country of production: " + JSON.parse(body).Country);
+ 				console.log("Language(s): " + JSON.parse(body).Language);
+ 				console.log("Plot: " + JSON.parse(body).Plot);
+ 				console.log("Actors: " + JSON.parse(body).Actors);
+ 				
+ 			}
+ 		})
  	} 
  	else {
  		var queryUrl = "http://www.omdbapi.com/?t=Mr.Nobody&y=&plot=short&apikey=trilogy";
  		console.log(queryUrl);
  	}
+
+ 	//Retrieve this information:
+ 	//Title
+ 	//Year
+ 	//IMDB Rating
+ 	//RTR
+ 	//Country of production
+ 	//Language
+ 	//Plot
+ 	//Actors
  	
 
 
