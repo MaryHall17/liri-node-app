@@ -50,14 +50,14 @@ switch (command) {
 	
 	});
 
- 	var params = {screen_name: 'TotallyRaine'};
+ 	var params = {screen_name: 'TotallyRaine', limit: 20};
  	client.get('statuses/user_timeline', params, function(error, tweets, response) {
  		if (!error) {
  			// console.log("Tweets " + JSON.stringify(tweets));
  			for (var i = 0; i < tweets.length; i++) {
- 				// var tweetText = tweets[i].text;
- 				// console.log(tweetText);
- 				console.log("something happened");
+ 				var tweetText = tweets[i].text;
+ 				console.log(tweetText);
+ 			
  			}
  			// console.log(response);
 
@@ -94,9 +94,10 @@ switch (command) {
  		spotify.search({type: 'track', query: 'The Sign'}, function(error, data) {
  			if(!error) {
  				var trackData = data.tracks.items[0];
- 				for (var i = 0; i < 20; i++) {
- 					console.log("something");
- 				}
+ 				// console.log(trackData);
+ 				// for (var i = 0; i < 20; i++) {
+ 				// 	console.log("something");
+ 				// }
  				// console.log(JSON.stringify(data));
  				// console.log(data.tracks.items.length);
  				// console.log(trackData);
@@ -105,9 +106,22 @@ switch (command) {
  				// console.log(data.album);
  				for (var i = 0; i < 20; i++) {
  					var artist = trackData.artists[i].name;
+ 					var track = trackData.name;
+ 					var album = trackData.album.name;
+ 					var previewLink = trackData. external_urls.spotify;
+ 					var infoObj = {
+ 						artist,
+ 						track,
+ 						album,
+ 						previewLink
+ 					};
+ 					console.log(infoObj);
  					console.log("var received " + trackData);
- 					console.log("log " + artist);
- 					console.log("something happened");
+ 					// console.log("log " + artist);
+ 					// console.log(track);
+ 					// console.log(album);
+ 					// console.log(previewLink);
+ 					// console.log("something happened");
  				}
  			}
  		});
