@@ -165,8 +165,15 @@ switch (command) {
 
  function movies() { 
  	var request = require("request");
- 	var queryUrl = "http://www.omdbapi.com/?t=" + movie + "&y=&plot=short&apikey=trilogy";
- 	console.log(queryUrl);
+ 	if (movie) {
+ 		var queryUrl = "http://www.omdbapi.com/?t=" + movie + "&y=&plot=short&apikey=trilogy";
+ 		console.log(queryUrl);
+ 	} 
+ 	else {
+ 		var queryUrl = "http://www.omdbapi.com/?t=Mr.Nobody&y=&plot=short&apikey=trilogy";
+ 		console.log(queryUrl);
+ 	}
+ 	
 
 
 
