@@ -7,11 +7,13 @@ var keys = require("./keys.js");
 var command = process.argv[2];
 
 var value = process.argv[3];
+console.log(value);
+
 
 
 //Testing
-console.log(keys);
-console.log(keys.spotify.id);
+// console.log(keys);
+// console.log(keys.spotify.id);
 // console.log(client);
 
 //Switch statements
@@ -65,7 +67,39 @@ switch (command) {
 
  function spotify() {
 
- }
+ 	var Spotify = require('node-spotify-api');
+
+ 	var spotify = new Spotify ({
+ 		id: keys.spotify.id,
+ 		secret: keys.spotify.secret
+ 	});
+ 	console.log("test");
+ 	if (value) {
+ 		console.log("There was a value")
+ 		spotify.search({type: 'track', query: value}, function(error, data) {
+ 			if(!error) {
+ 				// console.log(JSON.stringify(data));
+ 				for (var i = 0; i < data.length; i++) {
+ 					var dataArtist = data[i].artists;
+ 					console.log(dataArtist);
+ 				}
+ 			}
+ 		});
+ 	} else {
+ 		console.log("No value was provided")
+ 		spotify.search({type: 'track', query: 'The Sign'}, function(error, data) {
+ 			if(!error) {
+ 				console.log(data.tracks.items[0]);
+ 				// console.log(data.album);
+ 				for (var i = 0; i < data.length; i++) {
+ 					var info = data.tracks.items.artists[i];
+ 					console.log("log " + info);
+ 				}
+ 			}
+ 		});
+ 	};
+
+ };
 
  function movies() {
 
