@@ -172,21 +172,82 @@ switch (command) {
  		request(queryUrl, function(error, response, body) {
 
  			if (!error && response.statusCode === 200) {
- 				console.log("Title: " + JSON.parse(body).Title);
- 				console.log("Release year: " + JSON.parse(body).Year);
- 				console.log("IMDB Rating: " + JSON.parse(body).imdbRating);
- 				console.log("Rotten Tomatoes Rating: " + JSON.parse(body).Ratings[1].Value);
- 				console.log("Country of production: " + JSON.parse(body).Country);
- 				console.log("Language(s): " + JSON.parse(body).Language);
- 				console.log("Plot: " + JSON.parse(body).Plot);
- 				console.log("Actors: " + JSON.parse(body).Actors);
+ 				var title = JSON.parse(body).Title;
+ 				var year = JSON.parse(body).Year;
+ 				var imdbRating = JSON.parse(body).imdbRating;
+ 				var rottenTomatoesRating = JSON.parse(body).Ratings[1].Value;
+ 				var countryOfProduction = JSON.parse(body).Country;
+ 				var language = JSON.parse(body).Language;
+ 				var plot = JSON.parse(body).Plot;
+ 				var actors = JSON.parse(body).Actors;
+ 				
+ 				var movieObj = {
+ 					title,
+ 					year,
+ 					imdbRating,
+ 					rottenTomatoesRating,
+ 					countryOfProduction,
+ 					language,
+ 					plot,
+ 					actors
+ 				};
+
+ 				console.log(movieObj);
+ 				// console.log("Title: " + JSON.parse(body).Title);
+ 				// console.log("Release year: " + JSON.parse(body).Year);
+ 				// console.log("IMDB Rating: " + JSON.parse(body).imdbRating);
+ 				// console.log("Rotten Tomatoes Rating: " + JSON.parse(body).Ratings[1].Value);
+ 				// console.log("Country of production: " + JSON.parse(body).Country);
+ 				// console.log("Language(s): " + JSON.parse(body).Language);
+ 				// console.log("Plot: " + JSON.parse(body).Plot);
+ 				// console.log("Actors: " + JSON.parse(body).Actors);
  				
  			}
  		})
  	} 
  	else {
  		var queryUrl = "http://www.omdbapi.com/?t=Mr.Nobody&y=&plot=short&apikey=trilogy";
- 		console.log(queryUrl);
+ 		console.log(queryUrl); 
+
+ 		request(queryUrl, function(error, response, body) {
+
+ 			if (!error && response.statusCode === 200) {
+ 				var title = JSON.parse(body).Title;
+ 				var year = JSON.parse(body).Year;
+ 				var imdbRating = JSON.parse(body).imdbRating;
+ 				var rottenTomatoesRating = JSON.parse(body).Ratings[1].Value;
+ 				var countryOfProduction = JSON.parse(body).Country;
+ 				var language = JSON.parse(body).Language;
+ 				var plot = JSON.parse(body).Plot;
+ 				var actors = JSON.parse(body).Actors;
+ 				
+ 				var movieObj = {
+ 					title,
+ 					year,
+ 					imdbRating,
+ 					rottenTomatoesRating,
+ 					countryOfProduction,
+ 					language,
+ 					plot,
+ 					actors
+ 				};
+
+ 				console.log(movieObj);
+ 				// console.log("Title: " + JSON.parse(body).Title);
+ 				// console.log("Release year: " + JSON.parse(body).Year);
+ 				// console.log("IMDB Rating: " + JSON.parse(body).imdbRating);
+ 				// console.log("Rotten Tomatoes Rating: " + JSON.parse(body).Ratings[1].Value);
+ 				// console.log("Country of production: " + JSON.parse(body).Country);
+ 				// console.log("Language(s): " + JSON.parse(body).Language);
+ 				// console.log("Plot: " + JSON.parse(body).Plot);
+ 				// console.log("Actors: " + JSON.parse(body).Actors);
+ 				
+ 			}
+ 		})
+
+
+
+
  	}
 
  	//Retrieve this information:
@@ -202,7 +263,7 @@ switch (command) {
 
 
 
- }
+ } //function movies
 
  function iWantItThatWay() {
 
