@@ -12,9 +12,6 @@ var song = "";
 
 var movie = "";
 
-// console.log(process.argv[3]);
-// return
-
 
 for (var i = 3; i < value.length; i++) {
 
@@ -34,12 +31,6 @@ for (var i = 3; i < value.length; i++) {
 }
 
 
-
-
-//Testing
-// console.log(keys);
-// console.log(keys.spotify.id);
-// console.log(client);
 
 //Switch statements
 
@@ -84,7 +75,7 @@ switch (command) {
  				console.log(tweetText);
  			
  			}
- 			// console.log(response);
+ 		
 
  		}
  	});
@@ -101,12 +92,11 @@ switch (command) {
  	});
  	console.log("test");
  	if (song) {
- 		console.log("There was a value")
+ 		
  		spotify.search({type: 'track', query: song}, function(error, data) {
  			if(!error) {
  				var trackData = data.tracks.items[0];
- 				// console.log(trackData);
- 				// console.log(JSON.stringify(data));
+ 				
  				for (var i = 0; i < 20; i++) {
  					var artist = trackData.artists[i].name;
  					var track = trackData.name;
@@ -124,20 +114,11 @@ switch (command) {
  			}
  		});
  	} else {
- 		// console.log("No value was provided")
+ 		
  		spotify.search({type: 'track', query: 'The Sign'}, function(error, data) {
  			if(!error) {
  				var trackData = data.tracks.items[0];
- 				// console.log(trackData);
- 				// for (var i = 0; i < 20; i++) {
- 				// 	console.log("something");
- 				// }
- 				// console.log(JSON.stringify(data));
- 				// console.log(data.tracks.items.length);
- 				// console.log(trackData);
- 				// console.log(trackData.artists[0].name);
- 				// console.log(trackData.artists[1].name);
- 				// console.log(data.album);
+ 
  				for (var i = 0; i < 20; i++) {
  					var artist = trackData.artists[i].name;
  					var track = trackData.name;
@@ -151,11 +132,6 @@ switch (command) {
  					};
  					console.log(infoObj);
  					console.log("var received " + trackData);
- 					// console.log("log " + artist);
- 					// console.log(track);
- 					// console.log(album);
- 					// console.log(previewLink);
- 					// console.log("something happened");
  				}
  			}
  		});
@@ -193,14 +169,6 @@ switch (command) {
  				};
 
  				console.log(movieObj);
- 				// console.log("Title: " + JSON.parse(body).Title);
- 				// console.log("Release year: " + JSON.parse(body).Year);
- 				// console.log("IMDB Rating: " + JSON.parse(body).imdbRating);
- 				// console.log("Rotten Tomatoes Rating: " + JSON.parse(body).Ratings[1].Value);
- 				// console.log("Country of production: " + JSON.parse(body).Country);
- 				// console.log("Language(s): " + JSON.parse(body).Language);
- 				// console.log("Plot: " + JSON.parse(body).Plot);
- 				// console.log("Actors: " + JSON.parse(body).Actors);
  				
  			}
  		})
@@ -233,38 +201,32 @@ switch (command) {
  				};
 
  				console.log(movieObj);
- 				// console.log("Title: " + JSON.parse(body).Title);
- 				// console.log("Release year: " + JSON.parse(body).Year);
- 				// console.log("IMDB Rating: " + JSON.parse(body).imdbRating);
- 				// console.log("Rotten Tomatoes Rating: " + JSON.parse(body).Ratings[1].Value);
- 				// console.log("Country of production: " + JSON.parse(body).Country);
- 				// console.log("Language(s): " + JSON.parse(body).Language);
- 				// console.log("Plot: " + JSON.parse(body).Plot);
- 				// console.log("Actors: " + JSON.parse(body).Actors);
  				
  			}
  		})
 
-
-
-
- 	}
-
- 	//Retrieve this information:
- 	//Title
- 	//Year
- 	//IMDB Rating
- 	//RTR
- 	//Country of production
- 	//Language
- 	//Plot
- 	//Actors
- 	
-
-
-
- } //function movies
+	}
+ } 
 
  function iWantItThatWay() {
+ 	var fs = require("fs"); 
 
+ 	fs.readFile("../random.txt", "utf8", function (error, data) {
+ 		if (error) {
+ 			return console.log(error);
+ 		}
+
+ 		console.log(data);
+
+ 		var dataArr = data.split(",");
+
+ 		console.log(dataArr.length);
+ 		var command = dataArr[0];
+ 		song = dataArr[1];
+ 		console.log(command);
+ 		console.log(song);
+ 		spotify();
+
+
+ 	});
  }
